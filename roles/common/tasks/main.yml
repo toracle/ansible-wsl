@@ -1,0 +1,9 @@
+- name: zsh
+  apt:
+    name: zsh
+- name: install build-essential
+  apt:
+    name: build-essential
+- name: emacs build deps
+  apt:
+    name: [libgtk-3-dev, libxpm-dev, libjpeg-dev, libgif-dev, libtiff-dev, gnutls-dev, libtinfo-dev, librsvg2-dev, liblcms2-dev, libgpm-dev, libm17n-dev, libotf-dev, libwebkit2gtk-4.0-dev]
