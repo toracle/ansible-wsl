@@ -29,3 +29,11 @@
 - name: compile emacs
   shell: "cd /home/toracle/emacs-26.3; ./configure --with-xwidgets --with-x-toolkit=gtk3 --with-modules --with-mailutils; make; make install"
   when: emacs_exe.stat.exists == False
+
+- name: download pandoc2
+  get_url:
+    url: https://github.com/jgm/pandoc/releases/download/2.9.2.1/pandoc-2.9.2.1-1-amd64.deb
+    dest: /home/toracle/pandoc-2.9.2.1-1-amd64.deb
+
+- name: install pandoc2
+  apt: deb="/home/toracle/pandoc-2.9.2.1-1-amd64.deb"
