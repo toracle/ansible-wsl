@@ -1,6 +1,11 @@
 - name: zsh
   apt:
     name: zsh
+
+- name: pass
+  apt:
+    name: pass
+
 - name: install build-essential
   apt:
     name: build-essential
