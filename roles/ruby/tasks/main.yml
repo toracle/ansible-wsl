@@ -1,0 +1,8 @@
+- name: install ruby
+  apt:
+    name: ruby-full
+
+- name: install cucumber
+  gem:
+    name: cucumber
+    user_install: no
