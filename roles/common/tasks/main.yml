@@ -37,3 +37,8 @@
 
 - name: install pandoc2
   apt: deb="/home/toracle/pandoc-2.9.2.1-1-amd64.deb"
+
+- name: install xfce4-terminal
+  apt:
+    name: xfce4-terminal
+
