@@ -68,3 +68,8 @@
 - name: install unzip
   apt:
     name: unzip
+
+- name: install mariadbclient
+  apt:
+    name: libmariadbclient-dev
+
