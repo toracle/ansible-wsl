@@ -9,7 +9,7 @@
     - clojure
     - ruby
   vars:
-    ubuntu: yes
+    ubuntu: no
 
 # clojure
 # rust
