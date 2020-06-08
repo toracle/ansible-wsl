@@ -42,10 +42,15 @@
   apt:
     name: xfce4-terminal
 
+- name: .fonts directory
+  file: 
+    path: /home/toracle/.fonts
+    state: directory
+
 - name: download d2coding
   unarchive:
     src: https://github.com/naver/d2codingfont/blob/master/D2Coding-Ver1.3.2-20180524.zip?raw=true
-    dest: /home/toracle
+    dest: /home/toracle/.fonts
     remote_src: yes
 
 - name: build font cache
