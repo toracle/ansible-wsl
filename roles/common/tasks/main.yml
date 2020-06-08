@@ -60,3 +60,6 @@
     url: https://gist.githubusercontent.com/toracle/fc371f7d71ffd0962df7/raw/8fc86eba5e15d75294cec095f8b684204cc78c10/.tmux.conf
     dest: /home/toracle/.tmux.conf
 
+- name: install unzip
+  apt:
+    name: unzip
