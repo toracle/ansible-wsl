@@ -73,3 +73,6 @@
   apt:
     name: libmariadbclient-dev
 
+- name: install libcurl4
+  apt:
+    name: libcurl4-openssl-dev libssl-dev
