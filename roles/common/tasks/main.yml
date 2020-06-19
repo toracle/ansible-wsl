@@ -2,6 +2,12 @@
   apt:
     name: zsh
 
+- name: write zshrc
+  template:
+    src: zshrc.template
+    dest: "{{ home_dir }}/.zshrc"
+  become: no
+
 - name: pass
   apt:
     name: pass
