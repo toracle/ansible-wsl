@@ -25,6 +25,7 @@
     dest: "{{ home_dir }}"
     remote_src: yes
   when: emacs_exe.stat.exists == False
+  become: no
 
 - name: compile emacs
   shell: "cd {{ home_dir }}/emacs-26.3; ./configure --with-xwidgets --with-x-toolkit=gtk3 --with-modules --with-mailutils; make;"
@@ -45,6 +46,7 @@
     url: https://github.com/jgm/pandoc/releases/download/2.9.2.1/pandoc-2.9.2.1-1-amd64.deb
     dest: "{{ home_dir }}/pandoc-2.9.2.1-1-amd64.deb"
   when: pandoc2_file.stat.exists == False
+  become: no
 
 - name: install pandoc2
   apt: deb="{{ home_dir }}/pandoc-2.9.2.1-1-amd64.deb"
@@ -57,6 +59,7 @@
   file: 
     path: "{{ home_dir }}/.fonts"
     state: directory
+  become: no
 
 - name: register d2coding file
   stat:
@@ -69,6 +72,7 @@
     dest: "{{ home_dir }}/.fonts"
     remote_src: yes
   when: d2coding_dir.stat.exists == False
+  become: no
 
 - name: build font cache
   command: fc-cache -f -v
