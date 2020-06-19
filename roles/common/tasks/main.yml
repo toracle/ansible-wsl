@@ -27,7 +27,12 @@
   when: emacs_exe.stat.exists == False
 
 - name: compile emacs
-  shell: "cd {{ home_dir }}/emacs-26.3; ./configure --with-xwidgets --with-x-toolkit=gtk3 --with-modules --with-mailutils; make; make install"
+  shell: "cd {{ home_dir }}/emacs-26.3; ./configure --with-xwidgets --with-x-toolkit=gtk3 --with-modules --with-mailutils; make;"
+  when: emacs_exe.stat.exists == False
+  become: no
+
+- name: install emacs
+  shell: "cd {{ home_dir }}/emacs-26.3; make install"
   when: emacs_exe.stat.exists == False
 
 - name: register pandoc2 deb file
