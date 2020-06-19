@@ -9,6 +9,7 @@
     - clojure
     - ruby
     - rust
+    - nodejs
   vars:
     ubuntu: no
     home_dir: /home/toracle

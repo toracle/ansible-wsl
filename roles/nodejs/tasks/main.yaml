@@ -1,0 +1,13 @@
+- name: setup nodejs
+  shell:
+    cmd: "curl -sL https://deb.nodesource.com/setup_12.x | bash -"
+    warn: no
+
+- name: install nodejs
+  apt:
+    name: nodejs
+
+- name: install tern
+  npm:
+    name: tern
+    global: yes
