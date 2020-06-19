@@ -11,7 +11,7 @@
     - rust
     - nodejs
   vars:
-    ubuntu: yes
+    linux_dist: ubuntu
     home_dir: /home/toracle
 
 # clojure
