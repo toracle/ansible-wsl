@@ -87,4 +87,16 @@
 
 - name: install libcurl4
   apt:
-    name: libcurl4-openssl-dev libssl-dev
+    name: [libcurl4-openssl-dev, libssl-dev]
+
+- name: install ag
+  apt:
+    name: silversearcher-ag
+
+- name: install groff
+  apt:
+    name: groff
+
+- name: install graphviz
+  apt:
+    name: graphviz
