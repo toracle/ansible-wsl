@@ -8,6 +8,7 @@
     - python
     - clojure
     - ruby
+    - rust
   vars:
     ubuntu: no
     home_dir: /home/toracle

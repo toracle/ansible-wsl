@@ -1,0 +1,21 @@
+- name: setup rustup
+  shell:
+    cmd: "curl https://sh.rustup.rs -sSf | sh -s -- -y"
+    warn: no
+  become: no
+
+- name: install stable-gnu toolchain
+  shell: "{{ home_dir }}/.cargo/bin/rustup toolchain install stable-gnu"
+  become: no
+
+- name: install nightly toolchain
+  shell: "{{ home_dir }}/.cargo/bin/rustup toolchain install nightly"
+  become: no
+
+- name: install rust-src
+  shell: "{{ home_dir }}/.cargo/bin/rustup component add rust-src"
+  become: no
+
+- name: install racer
+  shell: "{{ home_dir }}/.cargo/bin/cargo +nightly install racer"
+  become: no
