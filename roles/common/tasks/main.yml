@@ -22,21 +22,27 @@
 - name: download emacs tarball
   unarchive:
     src: http://mirror.yongbok.net/gnu/emacs/emacs-26.3.tar.gz
-    dest: /home/toracle
+    dest: "{{ home_dir }}"
     remote_src: yes
   when: emacs_exe.stat.exists == False
 
 - name: compile emacs
-  shell: "cd /home/toracle/emacs-26.3; ./configure --with-xwidgets --with-x-toolkit=gtk3 --with-modules --with-mailutils; make; make install"
+  shell: "cd {{ home_dir }}/emacs-26.3; ./configure --with-xwidgets --with-x-toolkit=gtk3 --with-modules --with-mailutils; make; make install"
   when: emacs_exe.stat.exists == False
+
+- name: register pandoc2 deb file
+  stat:
+    path: "{{ home_dir }}/pandoc-2.9.2.1-1-amd64.deb"
+  register: pandoc2_file
 
 - name: download pandoc2
   get_url:
     url: https://github.com/jgm/pandoc/releases/download/2.9.2.1/pandoc-2.9.2.1-1-amd64.deb
-    dest: /home/toracle/pandoc-2.9.2.1-1-amd64.deb
+    dest: "{{ home_dir }}/pandoc-2.9.2.1-1-amd64.deb"
+  when: pandoc2_file.stat.exists == False
 
 - name: install pandoc2
-  apt: deb="/home/toracle/pandoc-2.9.2.1-1-amd64.deb"
+  apt: deb="{{ home_dir }}/pandoc-2.9.2.1-1-amd64.deb"
 
 - name: install xfce4-terminal
   apt:
@@ -44,14 +50,20 @@
 
 - name: .fonts directory
   file: 
-    path: /home/toracle/.fonts
+    path: "{{ home_dir }}/.fonts"
     state: directory
+
+- name: register d2coding file
+  stat:
+    path: "{{ home_dir }}/.fonts/D2Coding"
+  register: d2coding_dir
 
 - name: download d2coding
   unarchive:
     src: https://github.com/naver/d2codingfont/blob/master/D2Coding-Ver1.3.2-20180524.zip?raw=true
-    dest: /home/toracle/.fonts
+    dest: "{{ home_dir }}/.fonts"
     remote_src: yes
+  when: d2coding_dir.stat.exists == False
 
 - name: build font cache
   command: fc-cache -f -v
@@ -63,7 +75,7 @@
 - name: install tmux.conf
   get_url:
     url: https://gist.githubusercontent.com/toracle/fc371f7d71ffd0962df7/raw/8fc86eba5e15d75294cec095f8b684204cc78c10/.tmux.conf
-    dest: /home/toracle/.tmux.conf
+    dest: "{{ home_dir }}/.tmux.conf"
 
 - name: install unzip
   apt:
