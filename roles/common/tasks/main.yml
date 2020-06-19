@@ -1,3 +1,13 @@
+- name: add backport
+  template:
+    src: backport-source
+    dest: /etc/apt/sources.list.d/backport.list
+  when: linux_dist == 'debian'
+
+- name: apt update
+  apt:
+    update_cache: yes
+
 - name: zsh
   apt:
     name: zsh

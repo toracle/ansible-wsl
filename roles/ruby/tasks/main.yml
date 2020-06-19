@@ -1,6 +1,7 @@
 - name: install ruby
   apt:
     name: ruby-full
+    default_release: buster-backports
 
 - name: install cucumber
   gem:
