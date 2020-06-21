@@ -125,3 +125,7 @@
 - name: install graphviz
   apt:
     name: graphviz
+
+- name: install gettext
+  apt:
+    name: gettext
