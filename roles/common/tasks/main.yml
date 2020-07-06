@@ -16,9 +16,15 @@
   apt:
     name: zsh
 
-- name: install oh my zsh
+- name: register omz
+  stat:
+    path: "{{ home_dir }}/.oh-my-zsh"
+  register: omz_dir
+
+- name: install omz
   shell: 'sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"'
   become: no
+  when: omz_dir.stat.exists == False
 
 - name: write zshrc
   template:
