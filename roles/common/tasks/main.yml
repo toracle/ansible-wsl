@@ -16,6 +16,10 @@
   apt:
     name: zsh
 
+- name: install oh my zsh
+  shell: 'sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"'
+  become: no
+
 - name: write zshrc
   template:
     src: zshrc.template
