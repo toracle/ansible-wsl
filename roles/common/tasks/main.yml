@@ -56,6 +56,11 @@
   shell: "cd {{ home_dir }}/emacs-26.3; make install"
   when: emacs_exe.stat.exists == False
 
+- name: install emacs configuration
+  git:
+    repo: 'git@github.com:toracle/.emacs.d.git'
+    dest: "{{ home_dir }}"
+
 - name: register pandoc2 deb file
   stat:
     path: "{{ home_dir }}/pandoc-2.9.2.1-1-amd64.deb"
