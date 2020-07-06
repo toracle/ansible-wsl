@@ -61,6 +61,7 @@
     repo: 'git@github.com:toracle/.emacs.d.git'
     dest: "{{ home_dir }}/.emacs.d"
     accept_hostkey: yes
+  become: no
 
 - name: register pandoc2 deb file
   stat:
