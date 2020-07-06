@@ -59,7 +59,7 @@
 - name: install emacs configuration
   git:
     repo: 'git@github.com:toracle/.emacs.d.git'
-    dest: "{{ home_dir }}"
+    dest: "{{ home_dir }}/.emacs.d"
 
 - name: register pandoc2 deb file
   stat:
