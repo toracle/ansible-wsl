@@ -2,6 +2,12 @@
   apt:
     name: ruby-full
     default_release: buster-backports
+  when: linux_dist == 'debian'
+
+- name: install ruby
+  apt:
+    name: ruby-full
+  when: linux_dist != 'debian'
 
 - name: install cucumber
   gem:
