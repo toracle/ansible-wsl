@@ -12,7 +12,8 @@
     - nodejs
   vars:
     linux_dist: debian
-    home_dir: /home/toracle
+    username: toracle
+    home_dir: "/home/{{ username }}"
 
 # clojure
 # rust
