@@ -16,6 +16,10 @@
   apt:
     name: zsh
 
+- name: install powerline fonts
+  apt:
+    name: fonts-powerline
+
 - name: register omz
   stat:
     path: "{{ home_dir }}/.oh-my-zsh"
