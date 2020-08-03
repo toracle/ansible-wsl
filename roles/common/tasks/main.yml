@@ -129,7 +129,7 @@
 
 - name: install mariadbclient
   apt:
-    name: libmariadbclient-dev
+    name: [mariadb-client, libmariadbclient-dev]
 
 - name: install libcurl4
   apt:
@@ -150,3 +150,7 @@
 - name: install gettext
   apt:
     name: gettext
+
+- name: install cloc
+  apt:
+    name: cloc
