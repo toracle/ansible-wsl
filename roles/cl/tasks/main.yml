@@ -11,7 +11,8 @@
   become: no
 
 - name: install texinfo
-  apt: texinfo
+  apt:
+    name: texinfo
 
 - name: install ecl
   shell: ros install ecl
