@@ -55,19 +55,19 @@
 
 - name: download emacs tarball
   unarchive:
-    src: http://mirror.yongbok.net/gnu/emacs/emacs-26.3.tar.gz
+    src: http://mirror.yongbok.net/gnu/emacs/emacs-27.1.tar.gz
     dest: "{{ home_dir }}"
     remote_src: yes
   when: emacs_exe.stat.exists == False
   become: no
 
 - name: compile emacs
-  shell: "cd {{ home_dir }}/emacs-26.3; ./configure --with-xwidgets --with-x-toolkit=gtk3 --with-modules --with-mailutils --with-imagemagick; make;"
+  shell: "cd {{ home_dir }}/emacs-27.1; ./configure --with-xwidgets --with-x-toolkit=gtk3 --with-modules --with-mailutils --with-cairo; make;"
   when: emacs_exe.stat.exists == False
   become: no
 
 - name: install emacs
-  shell: "cd {{ home_dir }}/emacs-26.3; make install"
+  shell: "cd {{ home_dir }}/emacs-27.1; make install"
   when: emacs_exe.stat.exists == False
 
 - name: install emacs configuration
