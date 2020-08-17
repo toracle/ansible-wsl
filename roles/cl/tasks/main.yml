@@ -1,0 +1,26 @@
+- name: download roswell
+  get_url:
+    url: https://github.com/roswell/roswell/releases/download/v20.06.14.107/roswell_20.06.14.107-1_amd64.deb
+    dest: "{{ home_dir }}/roswell_20.06.14.107-1_amd64.deb"
+
+- name: install roswell
+  apt: deb="{{ home_dir }}/roswell_20.06.14.107-1_amd64.deb"
+
+- name: install sbcl-bin
+  shell: ros install sbcl-bin
+  become: no
+
+- name: install texinfo
+  apt: texinfo
+
+- name: install ecl
+  shell: ros install ecl
+  become: no
+
+- name: set sbcl-bin default
+  shell: ros use sbcl-bin
+  become: no
+
+- name: install slime
+  shell: ros install slime
+  become: no
