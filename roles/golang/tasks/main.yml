@@ -1,0 +1,17 @@
+- name: download golang
+  unarchive:
+    src: https://golang.org/dl/go1.15.linux-amd64.tar.gz
+    dest: /usr/local
+    remote_src: yes
+
+- name: link go bin
+  file:
+    src: /usr/local/go/bin/go
+    dest: /usr/local/bin/go
+    state: link
+
+- name: link go fmt bin
+  file:
+    src: /usr/local/go/bin/gofmt
+    dest: /usr/local/bin/gofmt
+    state: link

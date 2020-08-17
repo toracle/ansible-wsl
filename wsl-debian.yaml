@@ -8,6 +8,7 @@
     - python
     - clojure
     - cl
+    - golang
     - ruby
     - rust
     - nodejs
