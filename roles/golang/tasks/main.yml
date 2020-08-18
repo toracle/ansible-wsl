@@ -15,3 +15,7 @@
     src: /usr/local/go/bin/gofmt
     dest: /usr/local/bin/gofmt
     state: link
+
+- name: install godef
+  shell: go get github.com/rogpeppe/godef
+  become: no
