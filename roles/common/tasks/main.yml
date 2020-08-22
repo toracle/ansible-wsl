@@ -154,3 +154,7 @@
 - name: install cloc
   apt:
     name: cloc
+
+- name: install install-info
+  apt:
+    name: install-info

@@ -1,0 +1,3 @@
+- name: install racket
+  apt:
+    name: racket
