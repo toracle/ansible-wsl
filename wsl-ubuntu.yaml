@@ -16,6 +16,7 @@
     - nodejs
   vars:
     linux_dist: ubuntu
+    wsl: yes
     username: toracle
     home_dir: "/home/{{ username }}"
 
