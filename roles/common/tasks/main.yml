@@ -46,7 +46,7 @@
 
 - name: emacs build deps
   apt:
-    name: [libgtk-3-dev, libxpm-dev, libjpeg-dev, libgif-dev, libtiff-dev, gnutls-dev, libtinfo-dev, librsvg2-dev, liblcms2-dev, libgpm-dev, libm17n-dev, libotf-dev, libwebkit2gtk-4.0-dev, libmagickwand-dev, libxaw7-dev]
+    name: [libgtk-3-dev, libxpm-dev, libjpeg-dev, libgif-dev, libtiff-dev, gnutls-dev, libtinfo-dev, librsvg2-dev, liblcms2-dev, libgpm-dev, libm17n-dev, libotf-dev, libwebkit2gtk-4.0-dev, libmagickwand-dev, libxaw7-dev, libjansson4, libjansson-dev]
 
 - name: register emacs executable file
   stat:
