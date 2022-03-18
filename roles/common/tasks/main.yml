@@ -129,7 +129,7 @@
 
 - name: install mariadbclient
   apt:
-    name: [mariadb-client, libmariadbclient-dev]
+    name: [mariadb-client, libmariadb-dev]
 
 - name: install libcurl4
   apt:
