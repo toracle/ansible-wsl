@@ -159,33 +159,35 @@
   apt:
     name: install-info
 
-- name: install isync
-  apt:
-    name: [isync, notmuch, w3m, libgmime-3.0-dev, libxapian-dev, guile-2.2-dev, html2text, xdg-utils]
+# local email system
+#
+# - name: install isync
+#   apt:
+#     name: [isync, notmuch, w3m, libgmime-3.0-dev, libxapian-dev, guile-2.2-dev, html2text, xdg-utils]
 
-- name: register mu executable file
-  stat:
-    path: "/usr/local/bin/mu"
-  register: mu_exe
+# - name: register mu executable file
+#   stat:
+#     path: "/usr/local/bin/mu"
+#   register: mu_exe
 
-- name: download mu
-  unarchive:
-    src: https://github.com/djcb/mu/archive/1.4.13.tar.gz
-    dest: "{{ home_dir }}"
-    remote_src: yes
-  become: no
-  when: mu_exe.stat.exists == False
+# - name: download mu
+#   unarchive:
+#     src: https://github.com/djcb/mu/archive/1.4.13.tar.gz
+#     dest: "{{ home_dir }}"
+#     remote_src: yes
+#   become: no
+#   when: mu_exe.stat.exists == False
 
-- name: autogen mu
-  shell: "{{ home_dir }}/mu-1.4.13/autogen.sh"
-  become: no
-  when: mu_exe.stat.exists == False
+# - name: autogen mu
+#   shell: "{{ home_dir }}/mu-1.4.13/autogen.sh"
+#   become: no
+#   when: mu_exe.stat.exists == False
 
-- name: make mu
-  shell: "cd {{ home_dir }}/mu-1.4.13/; make"
-  become: no
-  when: mu_exe.stat.exists == False
+# - name: make mu
+#   shell: "cd {{ home_dir }}/mu-1.4.13/; make"
+#   become: no
+#   when: mu_exe.stat.exists == False
 
-- name: make install mu
-  shell: "cd {{ home_dir }}/mu-1.4.13/; make install"
-  when: mu_exe.stat.exists == False
+# - name: make install mu
+#   shell: "cd {{ home_dir }}/mu-1.4.13/; make install"
+#   when: mu_exe.stat.exists == False
