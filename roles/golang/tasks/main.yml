@@ -1,9 +1,21 @@
 - name: download golang
   unarchive:
-    src: https://golang.org/dl/go1.15.linux-amd64.tar.gz
+    src: https://golang.org/dl/go1.18.linux-amd64.tar.gz
     dest: /usr/local
     remote_src: yes
 
-- name: install godef
-  shell: go get github.com/rogpeppe/godef
-  become: no
+- name: register go binary
+  file:
+    src: /usr/local/go/bin/go
+    dest: /usr/local/bin/go
+    state: link
+
+- name: register gofmt binary
+  file:
+    src: /usr/local/go/bin/gofmt
+    dest: /usr/local/bin/gofmt
+    state: link
+
+# - name: install godef
+#   shell: go get github.com/rogpeppe/godef
+#   become: no
