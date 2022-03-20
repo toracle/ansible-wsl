@@ -16,6 +16,15 @@
   shell: "{{ home_dir }}/.cargo/bin/rustup component add rust-src"
   become: no
 
-- name: install racer
-  shell: "{{ home_dir }}/.cargo/bin/cargo +nightly install racer"
-  become: no
+# - name: install rust-analyzer
+#   unarchive:
+#     src: https://github.com/rust-analyzer/rust-analyzer/releases/latest/download/rust-analyzer-x86_64-unknown-linux-gnu.gz
+#     dest: "{{ home_dir }}/.local/bin"
+#     remote_src: yes
+#   become: no
+
+# - name: symlink rust-analyzer
+#   file:
+#     src: "{{ home_dir }}/.local/bin/rust-analyzer-x86_64-unknown-linux-gnu"
+#     dest: "{{ home_dir }}/.local/bin/rust-analyzer"
+#     state: link
