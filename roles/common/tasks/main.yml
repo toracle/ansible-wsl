@@ -1,3 +1,9 @@
+- name: create debs directory
+  file:
+    path: "{{ home_dir }}/debs"
+    state: directory
+  become: no
+
 - name: add backport
   template:
     src: backport-source
@@ -56,18 +62,18 @@
 - name: download emacs tarball
   unarchive:
     src: http://mirror.yongbok.net/gnu/emacs/emacs-27.2.tar.gz
-    dest: "{{ home_dir }}"
+    dest: "{{ home_dir }}/debs"
     remote_src: yes
   when: emacs_exe.stat.exists == False
   become: no
 
 - name: compile emacs
-  shell: "cd {{ home_dir }}/emacs-27.2; ./configure --with-x-toolkit=gtk2 --with-modules --with-mailutils --with-cairo; make;"
+  shell: "cd {{ home_dir }}/debs/emacs-27.2; ./configure --with-x-toolkit=gtk2 --with-modules --with-mailutils --with-cairo; make;"
   when: emacs_exe.stat.exists == False
   become: no
 
 - name: install emacs
-  shell: "cd {{ home_dir }}/emacs-27.2; make install"
+  shell: "cd {{ home_dir }}/debs/emacs-27.2; make install"
   when: emacs_exe.stat.exists == False
 
 - name: install emacs configuration
@@ -79,18 +85,18 @@
 
 - name: register pandoc2 deb file
   stat:
-    path: "{{ home_dir }}/pandoc-2.9.2.1-1-amd64.deb"
+    path: "{{ home_dir }}/debs/pandoc-2.9.2.1-1-amd64.deb"
   register: pandoc2_file
 
 - name: download pandoc2
   get_url:
     url: https://github.com/jgm/pandoc/releases/download/2.9.2.1/pandoc-2.9.2.1-1-amd64.deb
-    dest: "{{ home_dir }}/pandoc-2.9.2.1-1-amd64.deb"
+    dest: "{{ home_dir }}/debs/pandoc-2.9.2.1-1-amd64.deb"
   when: pandoc2_file.stat.exists == False
   become: no
 
 - name: install pandoc2
-  apt: deb="{{ home_dir }}/pandoc-2.9.2.1-1-amd64.deb"
+  apt: deb="{{ home_dir }}/debs/pandoc-2.9.2.1-1-amd64.deb"
 
 - name: install xfce4-terminal
   apt:
